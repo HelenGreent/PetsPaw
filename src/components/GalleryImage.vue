@@ -25,10 +25,7 @@ defineProps<{
 </style>
 
 
-
-
-
-
+<!--nice grid template don't work -->
 <!-- <template>
   <div class="flex flex-col gap-5">
     <div v-for="(chunk, index) of imageArray" :key="index" :class="index % 2 === 0 ? 'grid1' : 'grid2'">

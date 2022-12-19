@@ -1,3 +1,37 @@
+export interface IBreed{
+  weight: {
+    imperial: string
+    metric: string
+  }
+  height: {
+    imperial: string
+    metric: string
+  }
+  id: number
+  name: string
+  description?: string
+  country_code?: string
+  bred_for?: string
+  breed_group?: string
+  life_span: string
+  temperament?: string
+  origin?: string
+  history?: string
+  reference_image_id: string
+  image: {
+    id: string
+    width: number
+    height: number
+    url: string
+  }
+}
+
+export interface IStaticOptions {
+  sort: 'default' | 'asc' | 'dsc'
+  filterByName: string[]
+  limit: number
+}
+
 export const breeds: IBreed[] = [
   {
     weight: {
@@ -586,6 +620,29 @@ export const breeds: IBreed[] = [
       width: 853,
       height: 1280,
       url: 'https://cdn2.thedogapi.com/images/HyWGexcVQ.jpg'
+    }
+  },
+  {
+    weight: {
+      imperial: '4 - 7',
+      metric: '2 - 3'
+    },
+    height: {
+      imperial: '8 - 9',
+      metric: '20 - 23'
+    },
+    id: 27,
+    name: 'Yorkshire Terrier',
+    bred_for: 'Small vermin hunting',
+    breed_group: 'Toy',
+    life_span: '12 - 16 years',
+    temperament: 'Bold, Independent, Confident, Intelligent, Courageous',
+    reference_image_id: 'B12BnxcVQ',
+    image: {
+      id: 'B12BnxcVQ',
+      width: 1024,
+      height: 683,
+      url: 'https://cdn2.thedogapi.com/images/B12BnxcVQ.jpg'
     }
   },
   {
@@ -3909,29 +3966,6 @@ export const breeds: IBreed[] = [
       width: 1500,
       height: 1350,
       url: 'https://cdn2.thedogapi.com/images/HkNS3gqEm.jpg'
-    }
-  },
-  {
-    weight: {
-      imperial: '4 - 7',
-      metric: '2 - 3'
-    },
-    height: {
-      imperial: '8 - 9',
-      metric: '20 - 23'
-    },
-    id: 264,
-    name: 'Yorkshire Terrier',
-    bred_for: 'Small vermin hunting',
-    breed_group: 'Toy',
-    life_span: '12 - 16 years',
-    temperament: 'Bold, Independent, Confident, Intelligent, Courageous',
-    reference_image_id: 'B12BnxcVQ',
-    image: {
-      id: 'B12BnxcVQ',
-      width: 1024,
-      height: 683,
-      url: 'https://cdn2.thedogapi.com/images/B12BnxcVQ.jpg'
     }
   }
 ]

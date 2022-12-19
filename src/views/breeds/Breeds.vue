@@ -5,8 +5,10 @@
       <div class="flex justify-between gap-2.5 pb-5">
         <BackButton title="Breeds" />
 
-        <select multiple v-model="staticOptions.filterByName" class="select w-[226px] text-lightGrey"
-          placeholder="All breeds">
+        <select multiple 
+        v-model="staticOptions.filterByName" 
+        placeholder="All breeds" 
+        class="select w-[226px] text-lightGrey">
           <option class="breed-options" v-for="{ label, value } in breedsOption" :key="value" :value="value"
             :label="label">
           </option>
@@ -28,7 +30,8 @@
       </div>
 
       <div class="h-[600px] overflow-y-auto">
-        <GalleryImage class="mt-medium gap-medium" :data="gridData" />
+        <GalleryImage class="mt-2.5 gap-2.5" :data="Data"/>
+          <!-- <BreedItem :id="item.value" :key="item.value" :name="item.name" :src="item.img" /> -->
       </div>
     </section>
   </div>
@@ -53,7 +56,7 @@
 import SortingDownIcon from '@/assets/icons/SortingDownIcon.vue'
 import SortingUpIcon from '@/assets/icons/SortingUpIcon.vue'
 const breedsStore = useBreedsStore()
-const { allBreeds, filteredBreeds, staticOptions } = storeToRefs(breedsStore)
+const { allBreeds, filterBreeds, staticOptions } = storeToRefs(breedsStore)
 
 const imageLimit: { label: string; value: number | string }[] = [
   {
@@ -78,8 +81,8 @@ const breedsOption = computed<{ label: string; value: number | string }[]>(() =>
   return allBreeds.value.map(item => ({ label: item.name, value: item.name }))
 })
 
-const gridData = computed<{ value: number | string; img: string; name: string }[]>(() => {
-  return filteredBreeds.value.map(item => ({ value: item.id, img: item.image.url, name: item.name }))
+const Data = computed<{ value: number | string; img: string; name: string }[]>(() => {
+  return filterBreeds.value.map(item => ({ value: item.id, img: item.image.url, name: item.name }))
 })
 
 </script>

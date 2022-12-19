@@ -21,6 +21,7 @@ declare module '@vue/runtime-core' {
     PortalTarget: typeof import('./../src/plugins/portal/PortalTarget.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SearchByBreed: typeof import('./../src/components/SearchByBreed.vue')['default']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']

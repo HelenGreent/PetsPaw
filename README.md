@@ -1,4 +1,4 @@
-### PetsPaw using Vue.js 3 (tailwind, Element Plus)
+### PetsPaw using Vue.js 3 (tailwind)
 
 [Link to figma template](https://www.figma.com/file/ejuTUhJrZR0IjQdAB9OnWa/MSI-2021---Frontend?node-id=0%3A1&t=EEPC5cyEOaCWvf5s-0)
 

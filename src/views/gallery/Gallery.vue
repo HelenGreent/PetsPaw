@@ -31,7 +31,7 @@
 
         <div>
           <h2 class="select-caption">BREED</h2>
-          <select multiple v-model="staticOptions.filterByName" class="select">
+          <select multiple v-model="staticOptions.filterByName" placeholder="All Breeds" class="select">
             <option v-for="{ value, label } in breedsOption" :key="value" :value="value" :label="label">
             </option>
           </select>
@@ -44,9 +44,9 @@
               <option v-for="{ value, label } in imageLimit" :key="value" :value="value" :label="label">
               </option>
             </select>
-            <button
+            <button @click="onUpdate"
               class="flex items-center justify-center w-[40px] h-[40px] rounded-[10px] bg-base fill-active hover:bg-active hover:fill-base ease-in-out duration-300">
-              <RefreshIcon />
+              <RefreshIcon/>
             </button>
           </div>
         </div>
@@ -54,7 +54,7 @@
       </div>
 
       <div class="h-[600px] overflow-y-auto">
-        <GalleryImage class="mt-medium gap-medium" :data="gridData" />
+        <GalleryImage class="mt-medium gap-medium" :data="Data" />
       </div>
     </div>
   </div>
@@ -73,8 +73,9 @@
 <script lang="ts" setup>
 import UploadIcon from '@/assets/icons/UploadIcon.vue'
 import RefreshIcon from '@/assets/icons/RefreshIcon.vue'
+import type { IStaticOptions } from '@/store/modules/breeds'
 const breedsStore = useBreedsStore()
-const { allBreeds, filteredBreeds, staticOptions } = storeToRefs(breedsStore)
+const { allBreeds, filterBreeds, staticOptions } = storeToRefs(breedsStore)
 
 const orderParams: { label: string; value: string }[] = [
   {
@@ -129,7 +130,20 @@ const breedsOption = computed<{ label: string; value: number | string }[]>(() =>
   return allBreeds.value.map(item => ({ label: item.name, value: item.name }))
 })
 
-const gridData = computed<{ value: number | string; img: string; name: string }[]>(() => {
-  return filteredBreeds.value.map(item => ({ value: item.id, img: item.image.url, name: item.name }))
+const Data = computed<{ value: number | string; img: string; name: string }[]>(() => {
+  return filterBreeds.value.map(item => ({ value: item.id, img: item.image.url, name: item.name }))
 })
+
+// show all because random array function doesn't work,
+// if show the same array.length nothing changes, only redrawn img
+const showNew = ref<IStaticOptions>({
+  sort: 'default',
+  filterByName: [],
+  limit: 263,
+})
+
+function onUpdate () {
+  const { filterByName, limit, sort } = showNew.value
+  staticOptions.value = { filterByName, limit, sort }
+}
 </script>
